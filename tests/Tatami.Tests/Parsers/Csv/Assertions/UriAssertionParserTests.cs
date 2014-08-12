@@ -1,0 +1,72 @@
+namespace Tatami.Tests.Parsers.Csv.Assertions
+{
+    using System.Collections.Generic;
+    using System.Linq;
+    using Tatami.Models.Assertions;
+    using Tatami.Models.Csv;
+    using Tatami.Parsers;
+    using Tatami.Parsers.Csv.Assertions;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    [TestClass]
+    public class UriAssertionParserTests
+    {
+        [TestMethod]
+        public void TestParse()
+        {
+            // Arrange
+            var csvRow = new List<string> { null, "/local" };
+                
+            // Arrange
+            var header = new Header { Name = "Assertion", Depth = 1, From = 0, To = 1, Children =
+                new List<Header> {
+                    new Header { Name = "Uri", Depth = 2, From = 1, To = 1, }
+                }
+            };
+
+            // Act
+            var result = UriAssertionParser.Parse(header, csvRow);
+
+            // Assert
+            Assert.AreEqual("/local", ((UriAssertion)result.ElementAt(0)).Value);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(WrongFileFormatException))]
+        public void TestParseWithNotStartingWithSlash()
+        {
+            // Arrange
+            var csvRow = new List<string> { null, "local" };
+
+            // Arrange
+            var header = new Header { Name = "Assertion", Depth = 1, From = 0, To = 1, Children =
+                new List<Header> {
+                    new Header { Name = "Uri", Depth = 2, From = 1, To = 1,    }
+                }
+            };
+
+            // Act
+            UriAssertionParser.Parse(header, csvRow);
+        }
+
+        [TestMethod]
+        public void TestParseWithNoValue()
+        {
+            // Arrange
+            var csvRow = new List<string> { null, null };
+
+            // Arrange
+            var header = new Header { Name = "Assertion", Depth = 1, From = 0, To = 1, Children =
+                new List<Header> {
+                    new Header { Name = "Uri", Depth = 2, From = 1, To = 1, }
+                }
+            };
+
+            // Act
+            var result = UriAssertionParser.Parse(header, csvRow);
+
+            // Assert
+            Assert.AreEqual(null, result);
+        }
+    }
+}

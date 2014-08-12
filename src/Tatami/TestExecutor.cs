@@ -1,0 +1,30 @@
+namespace Tatami
+{
+    using System.Threading.Tasks;
+    using System.Xml.Linq;
+    using Tatami.Models;
+    using Tatami.Parsers.Csv;
+    using Tatami.Parsers.Mappings;
+    using Tatami.Services;
+
+    /// <summary>
+    /// TestExecutor class
+    /// </summary>
+    public static class TestExecutor
+    {
+        /// <summary>
+        /// Executes tests
+        /// </summary>
+        /// <param name="testCasesCsv">testCasesCsv parameter</param>
+        /// <param name="baseUriMappingXml">baseUriMappingXml parameter</param>
+        /// <param name="userAgentMappingXml">userAgentMappingXml parameter</param>
+        /// <param name="proxyUri">proxyUri parameter</param>
+        /// <returns>failed message. it returns null if tests are succeed.</returns>
+        public static async Task<TestCases> Test(string testCasesCsv, string baseUriMappingXml, string userAgentMappingXml, string proxyUri = null)
+        {
+            var testCases = TestCasesParser.Parse(new CsvParser(testCasesCsv).Parse());
+            await testCases.Test(new HttpRequestService(BaseUriMappingParser.Parse(XElement.Parse(baseUriMappingXml)), UserAgentMappingParser.Parse(XElement.Parse(userAgentMappingXml)), proxyUri));
+            return testCases;
+        }
+    }
+}
