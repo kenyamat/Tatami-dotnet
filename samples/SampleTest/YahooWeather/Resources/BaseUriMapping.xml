@@ -1,0 +1,4 @@
+﻿<BaseUriMapping>
+  <Item Key="YahooWeather">https://weather.yahoo.com</Item>
+  <Item Key="YahooWeatherAPI">http://weather.yahooapis.com</Item>
+</BaseUriMapping>

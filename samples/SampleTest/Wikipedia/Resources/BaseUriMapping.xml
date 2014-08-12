@@ -1,0 +1,4 @@
+﻿<BaseUriMapping>
+  <Item Key="en-US">http://en.wikipedia.org</Item>
+  <Item Key="ja-JP">http://ja.wikipedia.org</Item>
+</BaseUriMapping>
