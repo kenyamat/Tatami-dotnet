@@ -1,35 +1,45 @@
-﻿# Tatami.NET
-* Tatami is a C# test library for web application (HTML, XML, JSON and Other formats).
-* All request information, test cases and assert conditions are in CSV file.
-* Tatami enables to reduce test code and review test cases easily, and also improve maintainability of test project.
+# Tatami.NET
+* Tatami is a C# test library for web apps (HTML, XML, JSON and Other formats). 
+* Tatami manages request information (Uri, Query string, Header, Cookie), Test cases and Assert conditions with CSV file.
+* Tatami enables you to reduce test codes and improve maintainability of test cases and help review for test cases and assert. conditions.
+* Tatami can be integrated in the major C# test frameworks (NUnit, MS Test, etc.)
 
-## Overview
-Tatami provides the following functions.
-* Gets expected and actual documents(HTML, XML, JSON and Other formats)
-* Tests HTTP Response (Headers, Cookies Status Code, Uri)
-* Tests Response Documents using static value, XPath and Regular expression.
+## Scope 
+Tatami library covers Integration test, Acceptance test and Smoke test (not for Unit test).
 
-### 1. Tests a web page using static expected values
-1. Gets a actual document from web application (Wikipedia). [http://en.wikipedia.org/wiki/United_States](http://en.wikipedia.org/wiki/United_States)
+## Functions
+Tatami provides the following test functions.
+* Manage HTTP request information, test cases and assert conditions in CSV.
+* Get expected and actual documents (such as HTML, XML, JSON and Other formats).
+* Test HTTP response information (Uri, Status Code, Header, Cookie, Format using XSD).
+* Test response documents using expected values, XPath and regular expression.
+* Get failed cases information.  
+
+## Sample cases
+### 1. Tests web pages using static expected values
+1. Gets a actual html document from Web App (Wikipedia: [http://en.wikipedia.org/wiki/United_States](http://en.wikipedia.org/wiki/United_States)).      
 1. Asserts HTTP response header and/or document values using expected values in CSV file.
 
 ![sample1](docs/imgs/sample1.png)
 
-### 2. Test a web page using expected values from web services
-1. Gets a expected document from web service (Yahoo RSS). [http://weather.yahooapis.com/forecastrss?w=2459115](http://weather.yahooapis.com/forecastrss?w=2459115)
-1. Gets a actual document from web application (Yahoo Weather). [http://weather.yahoo.com/united-states/new-york/new-york-2459115/](http://weather.yahoo.com/united-states/new-york/new-york-2459115/)
+### 2. Test web pages using expected values from Web API
+1. Gets a expected document from Web API (Yahoo RSS: [http://weather.yahooapis.com/forecastrss?w=2459115](http://weather.yahooapis.com/forecastrss?w=2459115)). 
+1. Gets a actual document from Web App (Yahoo Weather: [http://weather.yahoo.com/united-states/new-york/new-york-2459115/](http://weather.yahoo.com/united-states/new-york/new-york-2459115/)). 
 1. Asserts HTTP response header and/or document values using expected values in web service or CSV file.
 
 ![sample1](docs/imgs/sample2.png)
 
-## Set up
+## Set up steps
 1. Creates a unit test project.
-1. Gets Tatami library from nuget.org then sets this into the project. [https://www.nuget.org/packages/Tatami.NET/](https://www.nuget.org/packages/Tatami.NET/)
+1. Gets Tatami library from nuget.org then sets this into the project.
+	* [https://www.nuget.org/packages/Tatami.NET/](https://www.nuget.org/packages/Tatami.NET/)
 1. Creates a [BaseUriMapping.xml](samples/SampleTest/Wikipedia/Resources/BaseUriMapping.xml)
 1. Creates a [UserAgentMapping.xml](samples/SampleTest/Wikipedia/Resources/BaseUriMapping.xml) if you need.
-1. Creates a CSV file for test. See [CSV implementation][] for details.
+1. Creates a CSV file for test.
+	* See [CSV implementation][] for details.
 1. Creates a test method like the following.
-```c#:WikipediaTests.cs
+
+```Test.cs
 [TestMethod]
 public async Task TestWikipediaWithUnitedStatesPage()
 {
@@ -47,7 +57,6 @@ public async Task TestWikipediaWithUnitedStatesPage()
         Assert.Fail(result.FailedMessage);
     }
 }
-
 ```
 
 ## CSV implementation
