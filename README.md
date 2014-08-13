@@ -1,4 +1,4 @@
-# Tatami.NET
+#![tatami](docs/imgs/tatami_s.png) Tatami.NET
 * Tatami is a C# test library for web apps. 
 * Tatami verify document structure. (HTML, XML, JSON and Other formats)
 * Tatami manages request information (Uri, Query string, Header, Cookie), Test cases and Assert conditions with CSV file.
