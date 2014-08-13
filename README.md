@@ -5,7 +5,11 @@
 * Tatami can be integrated in the major C# test frameworks (NUnit, MS Test, etc.)
 
 ## Scope 
-Tatami library covers Integration test, Acceptance test and Smoke test (not for Unit test).
+Tatami library covers
+* Integration Test
+* Acceptance Test
+* Smoke Test
+* (not for Unit Test).
 
 ## Functions
 Tatami provides the following test functions.
