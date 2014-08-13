@@ -1,9 +1,10 @@
 ﻿namespace SampleTest.Wikipedia
 {
     using System.IO;
+    using System.Net.Http;
     using System.Threading.Tasks;
-    using Tatami;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Tatami;
 
     [TestClass]
     public class WikipediaTests
@@ -16,9 +17,10 @@
         public async Task TestWikipediaWithUnitedStatesPage()
         {
             // Arrange
-            var testCasesCsv = File.ReadAllText(@"Wikipedia\Resources\Test_United_States.csv");
-            var baseUriMappingXml = File.ReadAllText(@"Wikipedia\Resources\BaseUriMapping.xml");
-            var userAgentMappingXml = File.ReadAllText(@"Wikipedia\Resources\UserAgentMapping.xml");
+            var testCasesCsv = await new HttpClient().GetStringAsync(
+                "https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/export?format=csv&id=1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE&gid=0");
+            var baseUriMappingXml = File.ReadAllText(@"Wikipedia\BaseUriMapping.xml");
+            var userAgentMappingXml = File.ReadAllText(@"UserAgentMapping.xml");
 
             // Act
             var result = await TestExecutor.TestAsync(testCasesCsv, baseUriMappingXml, userAgentMappingXml);

@@ -6,7 +6,8 @@ Recent Web applications consume data created by Web API instead of database. Thi
 * Test target : [http://weather.yahoo.com/united-states/new-york/new-york-2459115/](http://weather.yahoo.com/united-states/new-york/new-york-2459115/)
 * Test expected value : [http://weather.yahooapis.com/forecastrss?w=2459115](http://weather.yahooapis.com/forecastrss?w=2459115)
 * Test project : [samples/SampleTest/SampleTest.csproj](../samples/SampleTest/SampleTest.csproj) 
-* Test CSV file : [samples/SampleTest/YahooWeather/Resources/Test_NewYork.xlsx](../samples/SampleTest/YahooWeather/Resources/Test_NewYork.xlsx)
+* Test spreadsheet : [https://docs.google.com/spreadsheets/d/15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE/edit?usp=sharing](https://docs.google.com/spreadsheets/d/15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE/edit?usp=sharing)
+* CSV download link: [https://docs.google.com/spreadsheets/d/15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE/export?format=csv&id=15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE&gid=0](https://docs.google.com/spreadsheets/d/15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE/export?format=csv&id=15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE&gid=0) 
 
 ### Test details
 1. Get a expected XML document from Web API (Yahoo Weather RSS)
@@ -17,12 +18,13 @@ Recent Web applications consume data created by Web API instead of database. Thi
 
 ```
 [TestMethod]
-public async Task TestWikipediaWithUnitedStatesPage()
+public async Task TestNewYork()
 {
     // Arrange
-    var testCasesCsv = File.ReadAllText(@"Wikipedia\Resources\Test_United_States.csv");
-    var baseUriMappingXml = File.ReadAllText(@"Wikipedia\Resources\BaseUriMapping.xml");
-    var userAgentMappingXml = File.ReadAllText(@"Wikipedia\Resources\UserAgentMapping.xml");
+    var testCasesCsv = await new HttpClient().GetStringAsync(
+        "https://docs.google.com/spreadsheets/d/15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE/export?format=csv&id=15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE&gid=0");
+    var baseUriMappingXml = File.ReadAllText(@"YahooWeather\BaseUriMapping.xml");
+    var userAgentMappingXml = File.ReadAllText(@"UserAgentMapping.xml");
 
     // Act
     var result = await TestExecutor.TestAsync(testCasesCsv, baseUriMappingXml, userAgentMappingXml);

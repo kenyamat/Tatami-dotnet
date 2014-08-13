@@ -64,8 +64,7 @@ See [Yahoo API test](docs/sc_yahoo_api.md) for details.
 1. Create a UserAgentMapping.xml 
 	* See more details : [UserAgentMapping.xml settings][]
 1. Create a CSV file including test cases.
-	* csv file : [samples/SampleTest/Wikipedia/Resources/Test_United_States.csv](samples/SampleTest/Wikipedia/Resources/Test_United_States.csv)
-	* excel file : [samples/SampleTest/Wikipedia/Resources/Test_United_States.xls](samples/SampleTest/Wikipedia/Resources/Test_United_States.xlsx)
+	* Csv file : [https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/edit?usp=sharing)	
 1. Create a test method.
 	* [samples/SampleTest/Wikipedia/WikipediaTests.cs](samples/SampleTest/Wikipedia/WikipediaTests.cs)
 1. Run test.

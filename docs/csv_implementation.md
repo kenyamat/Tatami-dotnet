@@ -14,8 +14,9 @@
 
 ## <a name="Sample_CSVs">Sample CSVs</a>
 You can check sample csvs from the following links. These files are excel format, you need to convert from excel to csv before test. 
-* [Wikipedia Test](../samples/SampleTest/Wikipedia/Resources/Test_United_States.xlsx)
-* [Yahoo Weather Test](../samples/YahooWeather/Resources/Test_United_States.xlsx)
+* [Wikipedia Test](https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/edit?usp=sharing)
+* [Yahoo Weather Test](https://docs.google.com/spreadsheets/d/15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE/edit?usp=sharing)
+* [Yahoo API Test](https://docs.google.com/spreadsheets/d/1h-8vkF-5jEHXDIBwUpA3_otRVa30Um6qm05ZYoSgbQg/edit?usp=sharing)
 
 ## <a name="Arrange_section">Arrange section</a>
 Arrange section describes how to get actual document and expected document.

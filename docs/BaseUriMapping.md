@@ -11,7 +11,7 @@ Sample file : [samples/SampleTest/Wikipedia/Resources/BaseUriMapping.xml](../sam
 </BaseUriMapping>
 ```
 
-Sample test case CSV : [samples/SampleTest/Wikipedia/Resources/Test_United_States.xlsx](../samples/SampleTest/Wikipedia/Resources/Test_United_States.xlsx) 
+Sample test case CSV : [https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/edit?usp=sharing) 
 
 &nbsp;|Arrange|&nbsp;|&nbsp;|
 :-----|:-----|:-----|:-----|

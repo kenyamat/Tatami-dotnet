@@ -45,10 +45,7 @@
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="Tatami, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Tatami.NET.0.0.2\lib\net45\Tatami.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -69,42 +66,27 @@
     <Compile Include="YahooWeather\YahooWeatherTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Wikipedia\Resources\BaseUriMapping.xml">
+    <Content Include="Wikipedia\BaseUriMapping.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Wikipedia\Resources\UserAgentMapping.xml">
+    <Content Include="UserAgentMapping.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="YahooApi\Resources\BaseUriMapping.xml">
+    <Content Include="YahooApi\BaseUriMapping.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="YahooWeather\Resources\BaseUriMapping.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="YahooWeather\Resources\UserAgentMapping.xml">
+    <Content Include="YahooWeather\BaseUriMapping.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Wikipedia\Resources\Test_United_States.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Wikipedia\Resources\Test_United_States.xlsx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="YahooApi\Resources\Test_NewYork.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="YahooApi\Resources\Test_NewYork.xlsx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="YahooWeather\Resources\Test_NewYork.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="YahooWeather\Resources\Test_NewYork.xlsx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Tatami\Tatami.csproj">
+      <Project>{cb9ece3d-06ac-4640-b625-5cacdb6894e2}</Project>
+      <Name>Tatami</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

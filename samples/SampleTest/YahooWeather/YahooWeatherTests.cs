@@ -1,6 +1,7 @@
 ﻿namespace SampleTest.YahooWeather
 {
     using System.IO;
+    using System.Net.Http;
     using System.Threading.Tasks;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Tatami;
@@ -16,19 +17,18 @@
         public async Task TestNewYork()
         {
             // Arrange
-            var baseUriMappingXml = File.ReadAllText(@"YahooWeather\Resources\BaseUriMapping.xml");
-            var userAgentMappingXml = File.ReadAllText(@"YahooWeather\Resources\UserAgentMapping.xml");
-            var testCasesCsv = File.ReadAllText(@"YahooWeather\Resources\Test_NewYork.csv");
+            var testCasesCsv = await new HttpClient().GetStringAsync(
+                "https://docs.google.com/spreadsheets/d/15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE/export?format=csv&id=15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE&gid=0");
+            var baseUriMappingXml = File.ReadAllText(@"YahooWeather\BaseUriMapping.xml");
+            var userAgentMappingXml = File.ReadAllText(@"UserAgentMapping.xml");
 
             // Act
             var result = await TestExecutor.TestAsync(testCasesCsv, baseUriMappingXml, userAgentMappingXml);
-            var failedMessage = result.FailedMessage;
 
             // Assert
-            // var debug = result.ResultMessage;
-            if (!string.IsNullOrWhiteSpace(failedMessage))
+            if (!string.IsNullOrWhiteSpace(result.FailedMessage))
             {
-                Assert.Fail(failedMessage);
+                Assert.Fail(result.FailedMessage);
             }
         }
     }

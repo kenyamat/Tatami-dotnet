@@ -13,7 +13,7 @@ namespace Tatami.Parsers.Csv
         /// <summary>
         /// Return code
         /// </summary>
-        private const string ReturnCode = "\r\n";
+        private const string ReturnCode = "\n";
 
         /// <summary>
         /// csv filed
@@ -67,6 +67,8 @@ namespace Tatami.Parsers.Csv
         public CsvParser(string csv)
         {
             if (string.IsNullOrWhiteSpace(csv)) { throw new ArgumentNullException("csv"); }
+
+            csv = csv.Replace("\r\n", "\n");
 
             this.csv = csv;
         }
@@ -278,11 +280,16 @@ namespace Tatami.Parsers.Csv
         /// <returns>true:return code</returns>
         private bool IsReturnCode()
         {
-            if (ReturnCode.Equals(Convert.ToString(this.currentLetter) + Convert.ToString(this.GetNextLetter())))
+            if (ReturnCode.Length == 1 && ReturnCode == Convert.ToString(this.currentLetter))
             {
-                this.currentPosition++;
                 return true;
             }
+
+            //if (ReturnCode.Equals(Convert.ToString(this.currentLetter) + Convert.ToString(this.GetNextLetter())))
+            //{
+            //    this.currentPosition++;
+            //    return true;
+            //}
 
             return false;
         }

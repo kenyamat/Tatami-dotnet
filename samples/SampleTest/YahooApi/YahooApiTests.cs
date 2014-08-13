@@ -1,6 +1,7 @@
 ﻿namespace SampleTest.YahooApi
 {
     using System.IO;
+    using System.Net.Http;
     using System.Threading.Tasks;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Tatami;
@@ -16,18 +17,17 @@
         public async Task TestApiWithNewYork()
         {
             // Arrange
-            var baseUriMappingXml = File.ReadAllText(@"YahooApi\Resources\BaseUriMapping.xml");
-            var testCasesCsv = File.ReadAllText(@"YahooApi\Resources\Test_NewYork.csv");
+            var testCasesCsv = await new HttpClient().GetStringAsync(
+                "https://docs.google.com/spreadsheets/d/1h-8vkF-5jEHXDIBwUpA3_otRVa30Um6qm05ZYoSgbQg/export?format=csv&id=1h-8vkF-5jEHXDIBwUpA3_otRVa30Um6qm05ZYoSgbQg&gid=0");
+            var baseUriMappingXml = File.ReadAllText(@"YahooApi\BaseUriMapping.xml");
 
             // Act
             var result = await TestExecutor.TestAsync(testCasesCsv, baseUriMappingXml, null);
-            var failedMessage = result.FailedMessage;
 
             // Assert
-            // var debug = result.ResultMessage;
-            if (!string.IsNullOrWhiteSpace(failedMessage))
+            if (!string.IsNullOrWhiteSpace(result.FailedMessage))
             {
-                Assert.Fail(failedMessage);
+                Assert.Fail(result.FailedMessage);
             }
         }
     }

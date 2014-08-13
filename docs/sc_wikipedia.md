@@ -5,7 +5,8 @@ This scenario covers to test between html values and static values in CSV.
 
 * Test target : [http://en.wikipedia.org/wiki/United_States](http://en.wikipedia.org/wiki/United_States)
 * Test project : [samples/SampleTest/SampleTest.csproj](../samples/SampleTest/SampleTest.csproj) 
-* Test CSV file : [samples/SampleTest/Wikipedia/Resources/Test_United_States.xlsx](../samples/SampleTest/Wikipedia/Resources/Test_United_States.xlsx)
+* Test spreadsheet : [https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/edit?usp=sharing)
+* CSV download link: [https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/export?format=csv&id=1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE&gid=0](https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/export?format=csv&id=1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE&gid=0)
 
 ### Test details
 1. Get a actual html document from Web App.
@@ -22,8 +23,7 @@ This scenario covers to test between html values and static values in CSV.
 1. Create a UserAgentMapping.xml 
 	* See more details : [UserAgentMapping.xml settings](UserAgentMapping.md)	
 1. Create a CSV file including test cases.
-	* csv file : [samples/SampleTest/Wikipedia/Resources/Test_United_States.csv](../samples/SampleTest/Wikipedia/Resources/Test_United_States.csv)
-	* excel file : [samples/SampleTest/Wikipedia/Resources/Test_United_States.xls](../samples/SampleTest/Wikipedia/Resources/Test_United_States.xlsx)
+	* csv file : [https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/edit?usp=sharing)
 1. Create a test method.
 	* [samples/SampleTest/Wikipedia/WikipediaTests.cs](../samples/SampleTest/Wikipedia/WikipediaTests.cs)
 1. Run test.
@@ -33,9 +33,10 @@ This scenario covers to test between html values and static values in CSV.
 public async Task TestWikipediaWithUnitedStatesPage()
 {
     // Arrange
-    var testCasesCsv = File.ReadAllText(@"Wikipedia\Resources\Test_United_States.csv");
-    var baseUriMappingXml = File.ReadAllText(@"Wikipedia\Resources\BaseUriMapping.xml");
-    var userAgentMappingXml = File.ReadAllText(@"Wikipedia\Resources\UserAgentMapping.xml");
+    var testCasesCsv = await new HttpClient().GetStringAsync(
+        "https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/export?format=csv&id=1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE&gid=0");
+    var baseUriMappingXml = File.ReadAllText(@"Wikipedia\BaseUriMapping.xml");
+    var userAgentMappingXml = File.ReadAllText(@"UserAgentMapping.xml");
 
     // Act
     var result = await TestExecutor.TestAsync(testCasesCsv, baseUriMappingXml, userAgentMappingXml);
