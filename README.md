@@ -2,7 +2,7 @@
 * Tatami is a C# test library for web apps. 
 * Tatami verify document structure. (HTML, XML, JSON and Other formats)
 * Tatami manages request information (Uri, Query string, Header, Cookie), Test cases and Assert conditions with CSV file.
-* Tatami can be integrated in the major C# test frameworks (NUnit, MS Test, etc.)
+* Tatami can be integrated in major C# test frameworks and CI. (NUnit, MS Test, Jenkins, TeamCity, etc.)
 * Tatami enables you to reduce test codes and improve maintainability of test cases and help review for test cases and assert. conditions.
 
 ## Contents
