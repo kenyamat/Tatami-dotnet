@@ -38,6 +38,21 @@ Test Web API which returns XML/JSON using static values.
 ![sample3](docs/imgs/sample3.png)
 See [Yahoo API test](doc/sc_yahoo_api.md) for details.
 
+## Setup steps
+1. Create a test project. 
+1. Install Tatami library from nuget.org then sets this into the project.
+	* [https://www.nuget.org/packages/Tatami.NET/](https://www.nuget.org/packages/Tatami.NET/)
+1. Create a BaseUriMapping.xml
+	* See more details : [BaseUriMapping.xml settings](BaseUriMapping.md)	
+1. Create a UserAgentMapping.xml 
+	* See more details : [UserAgentMapping.xml settings](UserAgentMapping.md)	
+1. Create a CSV file including test cases.
+	* csv file : [samples/SampleTest/Wikipedia/Resources/Test_United_States.csv](../samples/SampleTest/Wikipedia/Resources/Test_United_States.csv)
+	* excel file : [samples/SampleTest/Wikipedia/Resources/Test_United_States.xls](../samples/SampleTest/Wikipedia/Resources/Test_United_States.xlsx)
+1. Create a test method.
+	* [samples/SampleTest/Wikipedia/WikipediaTests.cs](../samples/SampleTest/Wikipedia/WikipediaTests.cs)
+1. Run test.
+
 ## CSV implementation
 See [CSV implementation][] for details.
 
