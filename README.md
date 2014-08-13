@@ -66,7 +66,7 @@ See [Yahoo API test](docs/sc_yahoo_api.md) for details.
 	* [samples/SampleTest/Wikipedia/WikipediaTests.cs](samples/SampleTest/Wikipedia/WikipediaTests.cs)
 1. Run test.
 
-## <a name="Setup_steps">CSV implementation</a>
+## <a name="CSV_implementation">CSV implementation</a>
 See [CSV implementation][] for details.
 
 ## <a name="BaseUriMapping.xml_settings">BaseUriMapping.xml settings</a>
