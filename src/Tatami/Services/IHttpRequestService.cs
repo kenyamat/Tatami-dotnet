@@ -13,6 +13,13 @@ namespace Tatami.Services
         /// </summary>
         /// <param name="request">request information</param>
         /// <returns>response information</returns>
-        Task<HttpResponse> GetResponse(HttpRequest request);
+        HttpResponse GetResponse(HttpRequest request);
+
+        /// <summary>
+        /// Gets response async
+        /// </summary>
+        /// <param name="request">request information</param>
+        /// <returns>response information</returns>
+        Task<HttpResponse> GetResponseAsync(HttpRequest request);
     }
 }

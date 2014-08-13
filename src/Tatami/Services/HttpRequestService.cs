@@ -98,7 +98,27 @@ namespace Tatami.Services
         /// </summary>
         /// <param name="request">request information</param>
         /// <returns>response information</returns>
-        public async Task<HttpResponse> GetResponse(HttpRequest request)
+        public HttpResponse GetResponse(HttpRequest request)
+        {
+            return GetResponseAsync(request, false).Result;
+        }
+
+        /// <summary>
+        /// Gets response
+        /// </summary>
+        /// <param name="request">request information</param>
+        /// <returns>response information</returns>
+        public async Task<HttpResponse> GetResponseAsync(HttpRequest request)
+        {
+            return await GetResponseAsync(request, true);
+        }
+
+        /// <summary>
+        /// Gets response
+        /// </summary>
+        /// <param name="request">request information</param>
+        /// <returns>response information</returns>
+        public async Task<HttpResponse> GetResponseAsync(HttpRequest request, bool isAsync)
         {
             var baseUri = new Uri(this.baseUriMapping[request.BaseUri]);
             var requestUri = CreateUri(baseUri, request.PathInfos, request.QueryStrings, request.Fragment);
@@ -133,7 +153,10 @@ namespace Tatami.Services
                 httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(this.userAgentMapping[request.UserAgent]);
             }
 
-            var message = await RequestAsync(httpClient, request.Method, requestUri, request.Content);
+            var message = isAsync
+                ? await RequestAsync(httpClient, request.Method, requestUri, request.Content)
+                : RequestAsync(httpClient, request.Method, requestUri, request.Content).Result;
+
 
             var httpResponse = new HttpResponse
             {
@@ -150,7 +173,7 @@ namespace Tatami.Services
             }
 
             httpResponse.Uri = message.RequestMessage.RequestUri;
-            httpResponse.Contents = await message.Content.ReadAsStringAsync();
+            httpResponse.Contents = isAsync ? await message.Content.ReadAsStringAsync() : message.Content.ReadAsStringAsync().Result;
 
             return httpResponse;
         }

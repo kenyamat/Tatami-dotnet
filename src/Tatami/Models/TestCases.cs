@@ -159,18 +159,40 @@ namespace Tatami.Models
         /// Test
         /// </summary>
         /// <param name="httpRequestService">the httpRequestService</param>
-        public async Task Test(IHttpRequestService httpRequestService)
+        public void Test(IHttpRequestService httpRequestService)
         {
             foreach (var testCase in this)
             {
                 if (testCase.Arranges.Expected != null && testCase.Arranges.Expected.HttpRequest != null)
                 {
-                    testCase.Arranges.Expected.HttpResponse = await httpRequestService.GetResponse(testCase.Arranges.Expected.HttpRequest);
+                    testCase.Arranges.Expected.HttpResponse = httpRequestService.GetResponse(testCase.Arranges.Expected.HttpRequest);
                 }
 
                 if (testCase.Arranges.Actual != null)
                 {
-                    testCase.Arranges.Actual.HttpResponse = await httpRequestService.GetResponse(testCase.Arranges.Actual.HttpRequest);
+                    testCase.Arranges.Actual.HttpResponse = httpRequestService.GetResponse(testCase.Arranges.Actual.HttpRequest);
+                }
+
+                testCase.Assert(testCase.Arranges.Expected, testCase.Arranges.Actual);
+            }
+        }
+
+        /// <summary>
+        /// Test async
+        /// </summary>
+        /// <param name="httpRequestService">the httpRequestService</param>
+        public async Task TestAsync(IHttpRequestService httpRequestService)
+        {
+            foreach (var testCase in this)
+            {
+                if (testCase.Arranges.Expected != null && testCase.Arranges.Expected.HttpRequest != null)
+                {
+                    testCase.Arranges.Expected.HttpResponse = await httpRequestService.GetResponseAsync(testCase.Arranges.Expected.HttpRequest);
+                }
+
+                if (testCase.Arranges.Actual != null)
+                {
+                    testCase.Arranges.Actual.HttpResponse = await httpRequestService.GetResponseAsync(testCase.Arranges.Actual.HttpRequest);
                 }
 
                 testCase.Assert(testCase.Arranges.Expected, testCase.Arranges.Actual);

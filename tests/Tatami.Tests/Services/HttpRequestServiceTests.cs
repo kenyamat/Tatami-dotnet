@@ -91,7 +91,7 @@ namespace Tatami.Tests.Services
 
                 // Act
                 var httpRequestService = new HttpRequestService(baseUriMapping, userAgentMapping, "http://proxy.com");
-                var httpResponse = httpRequestService.GetResponse(httpRequest).Result;
+                var httpResponse = httpRequestService.GetResponseAsync(httpRequest).Result;
 
                 // Assert
                 Assert.AreEqual(1, httpResponse.Headers.Count);

@@ -1,5 +1,6 @@
 # Tatami CSV settings
 
+* Sample CSVs 
 * [Arrange section](#Arrange_section)
 	* [CSV structure](#Arrage_CSV_structure)
 	* [Column details](#Arrage_Column_details) 
@@ -9,7 +10,12 @@
 * [Contents section in Assert section](#Contents_section)
 	* [CSV structure](#Contents_CSV_structure)
 	* [Column details](#Contents_Column_details) 
-	* [Column details for Expected/Actual section](#Contents_Column_Details2) 
+	* [Column details for Expected/Actual section](#Contents_Column_details2)
+
+## <a name="Sample_CSVs">Sample CSVs</a>
+You can check sample csvs from the following links. These files are excel format, you need to convert from excel to csv before test. 
+* [Wikipedia Test](../samples/SampleTest/Wikipedia/Resources/Test_United_States.xlsx)
+* [Yahoo Weather Test](../samples/YahooWeather/Resources/Test_United_States.xlsx)
 
 ## <a name="Arrange_section">Arrange section</a>
 Arrange section describes how to get actual document and expected document.
@@ -62,8 +68,8 @@ Cookies|The section specifies HTTP response cookies for assertion.|optional
 Xsd|The section specifies XSD assertion.|optional 
 Contents|The section specifies document assertion.|optional
 
-## <a id="Contents_section">Contents section in Assert section</a>
-### <a id="Contents_CSV_structure">CSV structure</a>
+## <a name="Contents_section">Contents section in Assert section</a>
+### <a name="Contents_CSV_structure">CSV structure</a>
 |Contents|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|
 |:----------------|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |Name|IsList|IsDateTime|IsTime|Expected|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|Actual|&nbsp;|&nbsp;|&nbsp;|&nbsp;|

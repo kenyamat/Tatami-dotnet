@@ -8,9 +8,6 @@
     [TestClass]
     public class YahooWeatherTests
     {
-        private static readonly string baseUriMappingXml = File.ReadAllText(@"YahooWeather\Resources\BaseUriMapping.xml");
-        private static readonly string userAgentMappingXml = File.ReadAllText(@"YahooWeather\Resources\UserAgentMapping.xml");
-
         /// <summary>
         /// Test New york page
         /// https://weather.yahoo.com/us/ny/new-york-2459115/
@@ -19,10 +16,12 @@
         public async Task TestNewYork()
         {
             // Arrange
+            var baseUriMappingXml = File.ReadAllText(@"YahooWeather\Resources\BaseUriMapping.xml");
+            var userAgentMappingXml = File.ReadAllText(@"YahooWeather\Resources\UserAgentMapping.xml");
             var testCasesCsv = File.ReadAllText(@"YahooWeather\Resources\Test_NewYork.csv");
 
             // Act
-            var result = await TestExecutor.Test(testCasesCsv, baseUriMappingXml, userAgentMappingXml, null);
+            var result = await TestExecutor.TestAsync(testCasesCsv, baseUriMappingXml, userAgentMappingXml);
             var failedMessage = result.FailedMessage;
 
             // Assert

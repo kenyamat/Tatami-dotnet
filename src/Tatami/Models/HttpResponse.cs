@@ -178,13 +178,13 @@ namespace Tatami.Models
                 return ParserType.Html;
             }
 
-            if (contentType.IndexOf("text/xml", StringComparison.InvariantCultureIgnoreCase) >= 0
-                || contentType.IndexOf("rss+xml", StringComparison.InvariantCultureIgnoreCase) >= 0)
+            if (contentType.IndexOf("xml", StringComparison.InvariantCultureIgnoreCase) >= 0)
             {
                 return ParserType.Xml;
             }
 
-            if (contentType.IndexOf("javascript", StringComparison.InvariantCultureIgnoreCase) >= 0)
+            if (contentType.IndexOf("javascript", StringComparison.InvariantCultureIgnoreCase) >= 0
+                || contentType.IndexOf("json", StringComparison.InvariantCultureIgnoreCase) >= 0)
             {
                 return ParserType.JavaScript;
             }

@@ -21,7 +21,7 @@
             var userAgentMappingXml = File.ReadAllText(@"Wikipedia\Resources\UserAgentMapping.xml");
 
             // Act
-            var result = await TestExecutor.Test(testCasesCsv, baseUriMappingXml, userAgentMappingXml);
+            var result = await TestExecutor.TestAsync(testCasesCsv, baseUriMappingXml, userAgentMappingXml);
 
             // Assert
             if (!string.IsNullOrWhiteSpace(result.FailedMessage))

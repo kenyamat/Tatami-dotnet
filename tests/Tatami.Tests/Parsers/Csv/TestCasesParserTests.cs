@@ -80,7 +80,7 @@ namespace Tatami.Tests.Parsers.Csv
                 </html>";
             var httpRequestServiceShim = new StubIHttpRequestService
             {
-                GetResponseHttpRequest = request =>
+                GetResponseAsyncHttpRequest = request =>
                     request.Name == "Expected"
                         ? Task.FromResult(new HttpResponse { Contents = ExpectedXml, ContentType = "text/xml" })
                         : Task.FromResult(new HttpResponse { Contents = ActualHtml, ContentType = "text/html" })
@@ -88,7 +88,7 @@ namespace Tatami.Tests.Parsers.Csv
 
             // Act
             var testCases = TestCasesParser.Parse(data);
-            await testCases.Test(httpRequestServiceShim);
+            await testCases.TestAsync(httpRequestServiceShim);
 
             // Assert
             Assert.IsTrue(testCases.Success);
@@ -123,7 +123,7 @@ namespace Tatami.Tests.Parsers.Csv
                 </html>";
             var httpRequestServiceShim = new StubIHttpRequestService
             {
-                GetResponseHttpRequest = request =>
+                GetResponseAsyncHttpRequest = request =>
                     request.Name == "Expected"
                         ? Task.FromResult(new HttpResponse { Contents = ExpectedXml, ContentType = "text/xml" })
                         : Task.FromResult(new HttpResponse { Contents = ActualHtml, ContentType = "text/html" })
@@ -131,7 +131,7 @@ namespace Tatami.Tests.Parsers.Csv
 
             // Act
             var testCases = TestCasesParser.Parse(data);
-            await testCases.Test(httpRequestServiceShim);
+            await testCases.TestAsync(httpRequestServiceShim);
 
             // Assert
             Assert.IsTrue(!testCases.Success);
@@ -164,12 +164,12 @@ namespace Tatami.Tests.Parsers.Csv
                 </html>";
             var httpRequestServiceShim = new StubIHttpRequestService
             {
-                GetResponseHttpRequest = request => Task.FromResult(new HttpResponse { Contents = ActualHtml, ContentType = "text/html" })
+                GetResponseAsyncHttpRequest = request => Task.FromResult(new HttpResponse { Contents = ActualHtml, ContentType = "text/html" })
             };
 
             // Act
             var testCases = TestCasesParser.Parse(data);
-            await testCases.Test(httpRequestServiceShim);
+            await testCases.TestAsync(httpRequestServiceShim);
 
             // Assert
             Assert.IsTrue(testCases.Success);

@@ -33,11 +33,11 @@ namespace Tatami.Tests.Models
 
             var httpRequestService = new StubIHttpRequestService
             {
-                GetResponseHttpRequest = r => Task.FromResult(new HttpResponse())
+                GetResponseAsyncHttpRequest = r => Task.FromResult(new HttpResponse())
             };
 
             // Act
-            await testCases.Test(httpRequestService);
+            await testCases.TestAsync(httpRequestService);
 
             // Assert
             Assert.IsTrue(testCases.Success);
@@ -63,11 +63,11 @@ namespace Tatami.Tests.Models
             };
             var httpRequestService = new StubIHttpRequestService
             {
-                GetResponseHttpRequest = request => Task.FromResult(new HttpResponse())
+                GetResponseAsyncHttpRequest = request => Task.FromResult(new HttpResponse())
             };
 
             // Act
-            await testCases.Test(httpRequestService);
+            await testCases.TestAsync(httpRequestService);
 
             // Assert
             Assert.IsTrue(testCases.Success);
@@ -94,11 +94,11 @@ namespace Tatami.Tests.Models
             };
             var httpRequestService = new StubIHttpRequestService
             {
-                GetResponseHttpRequest = request => Task.FromResult(new HttpResponse())
+                GetResponseAsyncHttpRequest = request => Task.FromResult(new HttpResponse())
             };
 
             // Act
-            await testCases.Test(httpRequestService);
+            await testCases.TestAsync(httpRequestService);
 
             // Assert
             Assert.IsFalse(testCases.Success);
@@ -126,11 +126,11 @@ namespace Tatami.Tests.Models
             };
             var httpRequestService = new StubIHttpRequestService
             {
-                GetResponseHttpRequest = request => Task.FromResult(new HttpResponse())
+                GetResponseAsyncHttpRequest = request => Task.FromResult(new HttpResponse())
             };
 
             // Act
-            await testCases.Test(httpRequestService);
+            await testCases.TestAsync(httpRequestService);
 
             // Assert
             Assert.IsFalse(testCases.Success);

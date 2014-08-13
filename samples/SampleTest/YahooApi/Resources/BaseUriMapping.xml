@@ -1,0 +1,3 @@
+﻿<BaseUriMapping>
+  <Item Key="YahooAPI">http://query.yahooapis.com</Item>
+</BaseUriMapping>
