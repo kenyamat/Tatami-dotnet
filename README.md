@@ -8,6 +8,7 @@
 ## Contents
 * [Scope](#Scope)
 * [Functions](#Functions)
+* [Nuget package](#Nuget_package)
 * [Showcase](#Showcase)
 * [Setup steps](#Setup_steps)
 * [CSV implementation](#CSV_implementation)
@@ -29,6 +30,9 @@ Tatami provides the following test functions.
 * Test HTTP response information (Uri, Status Code, Header, Cookie, Format using XSD).
 * Test response documents using expected values, XPath and regular expression.
 * Provide failed information.  
+
+## <a name="Nuget_package">Nuget_package</a>
+[https://www.nuget.org/packages/Tatami.NET/](https://www.nuget.org/packages/Tatami.NET/)
 
 ## <a name="Showcase">Showcase</a>
 ### 1. HTML page test (Wikipedia)
