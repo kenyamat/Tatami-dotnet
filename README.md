@@ -26,20 +26,20 @@ Test a HTML structure of "United States" page using static expected values.
 * This scenario covers to test between html values and static values in CSV. 
 ![sample1](docs/imgs/sample1.png)
 
-See [Wikipedia page test](doc/sc_wikipedia.md) for details.
+See [Wikipedia page test](docs/sc_wikipedia.md) for details.
 
 ### 2. HTML page test using Web API (Yahoo Weather)
 Test a HTML structure of "New York" page using values from Web API (Yahoo Weather RSS).
 * Recent Web applications consume data created by Web API instead of database. This scenario will cover to test values between HTML and XML from Web API.
 ![sample2](docs/imgs/sample2.png)
 
-See [Yahoo Weather page test](doc/sc_yahoo_weather.md) for details.
+See [Yahoo Weather page test](docs/sc_yahoo_weather.md) for details.
 
 ### 3. Web API test (XML/JSON)
 Test Web API which returns XML/JSON using static values.
 ![sample3](docs/imgs/sample3.png)
 
-See [Yahoo API test](doc/sc_yahoo_api.md) for details.
+See [Yahoo API test](docs/sc_yahoo_api.md) for details.
 
 ## Setup steps
 1. Create a test project. 
