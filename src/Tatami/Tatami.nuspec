@@ -6,7 +6,9 @@
     <version>$version$</version>
     <authors>kenyamat</authors>
     <copyright>Copyright 2014</copyright>
+    <summary>$description$</summary>
     <projectUrl>https://github.com/kenyamat/Tatami-dotnet</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/kenyamat/Tatami-dotnet/master/docs/imgs/tatami.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <tags>test library</tags>
