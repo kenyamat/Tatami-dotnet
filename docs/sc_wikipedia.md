@@ -1,11 +1,11 @@
-# Show case: Wikipedia page test
+# Showcase: Wikipedia page test
 
 ### Scenario : Test a HTML structure of "United States" page using static expected values.
 This scenario covers to test between html values and static values in CSV. 
 
-Test target : [http://en.wikipedia.org/wiki/United_States](http://en.wikipedia.org/wiki/United_States)
-Test project : [samples/SampleTest/SampleTest.csproj](../samples/SampleTest/SampleTest.csproj) 
-Test CSV file : [samples/SampleTest/Wikipedia/Resources/Test_United_States.xlsx](../samples/SampleTest/Wikipedia/Resources/Test_United_States.xlsx)
+* Test target : [http://en.wikipedia.org/wiki/United_States](http://en.wikipedia.org/wiki/United_States)
+* Test project : [samples/SampleTest/SampleTest.csproj](../samples/SampleTest/SampleTest.csproj) 
+* Test CSV file : [samples/SampleTest/Wikipedia/Resources/Test_United_States.xlsx](../samples/SampleTest/Wikipedia/Resources/Test_United_States.xlsx)
 
 ### Test details
 1. Get a actual html document from Web App.
