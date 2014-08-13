@@ -5,14 +5,24 @@
 * Tatami can be integrated in the major C# test frameworks (NUnit, MS Test, etc.)
 * Tatami enables you to reduce test codes and improve maintainability of test cases and help review for test cases and assert. conditions.
 
-## Scope 
+## Contents
+* [Scope](#Scope)
+* [Functions](#Functions)
+* [Showcase](#Showcase)
+* [Setup steps](#Setup_steps)
+* [CSV implementation](#CSV_implementation)
+* [BaseUriMapping.xml settings](#BaseUriMapping.xml_settings)
+* [Dependencies](#Dependencies)
+* [Copyright](#Copyright)
+
+## <a name="Scope">Scope</a> 
 This library covers the following test types.
 * Integration Test
 * Acceptance Test
 * Smoke Test
 * (not for Unit Test).
 
-## Functions
+## <a name="Functions">Functions</a>
 Tatami provides the following test functions.
 * Manage HTTP request information, test cases and assert conditions in CSV.
 * Get expected and actual documents (such as HTML, XML, JSON and Other formats).
@@ -20,7 +30,7 @@ Tatami provides the following test functions.
 * Test response documents using expected values, XPath and regular expression.
 * Provide failed information.  
 
-## Showcase
+## <a name="Showcase">Showcase</a>
 ### 1. HTML page test (Wikipedia)
 Test a HTML structure of "United States" page using static expected values.
 * This scenario covers to test between html values and static values in CSV. 
@@ -41,7 +51,7 @@ Test Web API which returns XML/JSON using static values.
 
 See [Yahoo API test](docs/sc_yahoo_api.md) for details.
 
-## Setup steps
+## <a name="Setup_steps">Setup steps</a>
 1. Create a test project. 
 1. Install Tatami library from nuget.org then sets this into the project.
 	* [https://www.nuget.org/packages/Tatami.NET/](https://www.nuget.org/packages/Tatami.NET/)
@@ -56,20 +66,20 @@ See [Yahoo API test](docs/sc_yahoo_api.md) for details.
 	* [samples/SampleTest/Wikipedia/WikipediaTests.cs](samples/SampleTest/Wikipedia/WikipediaTests.cs)
 1. Run test.
 
-## CSV implementation
+## <a name="Setup_steps">CSV implementation</a>
 See [CSV implementation][] for details.
 
-## BaseUriMapping.xml settings
+## <a name="BaseUriMapping.xml_settings">BaseUriMapping.xml settings</a>
 See [BaseUriMapping.xml settings][] for details.
 
-## UserAgentMapping.xml settings
+## <a name="UserAgentMapping.xml_settings">UserAgentMapping.xml settings</a>
 See [UserAgentMapping.xml settings][] for details.
 
-## Dependencies
+## <a name="Dependencies">Dependencies</a>
 * [HtmlAgilityPack](http://htmlagilitypack.codeplex.com/)
 * [Newtonsoft.Json](http://james.newtonking.com/json)
 
-## Copyright
+## <a name="Copyright">Copyright</a>
 Copyright (c) 2014 kenyamat. Licensed under MIT.
 
 [CSV implementation]: docs/csv_implementation.md
