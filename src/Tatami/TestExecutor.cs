@@ -2,6 +2,7 @@ namespace Tatami
 {
     using System.Threading.Tasks;
     using System.Xml.Linq;
+    using Csv;
     using Tatami.Models;
     using Tatami.Parsers.Csv;
     using Tatami.Parsers.Mappings;
@@ -22,8 +23,10 @@ namespace Tatami
         /// <returns>failed message. it returns null if tests are succeed.</returns>
         public static TestCases Test(string testCasesCsv, string baseUriMappingXml, string userAgentMappingXml, string proxyUri = null)
         {
-            var testCases = TestCasesParser.Parse(new CsvParser(testCasesCsv).Parse());
-            testCases.Test(new HttpRequestService(BaseUriMappingParser.Parse(XElement.Parse(baseUriMappingXml)), userAgentMappingXml != null ? UserAgentMappingParser.Parse(XElement.Parse(userAgentMappingXml)) : null, proxyUri));
+            var testCases = TestCasesParser.Parse(new CsvParser().Parse(testCasesCsv));
+            testCases.Test(
+                new HttpRequestService(BaseUriMappingParser.Parse(XElement.Parse(baseUriMappingXml)),
+                    userAgentMappingXml != null ? UserAgentMappingParser.Parse(XElement.Parse(userAgentMappingXml)) : null, proxyUri));
             return testCases;
         }
 
@@ -37,8 +40,10 @@ namespace Tatami
         /// <returns>failed message. it returns null if tests are succeed.</returns>
         public static async Task<TestCases> TestAsync(string testCasesCsv, string baseUriMappingXml, string userAgentMappingXml, string proxyUri = null)
         {
-            var testCases = TestCasesParser.Parse(new CsvParser(testCasesCsv).Parse());
-            await testCases.TestAsync(new HttpRequestService(BaseUriMappingParser.Parse(XElement.Parse(baseUriMappingXml)), userAgentMappingXml != null ? UserAgentMappingParser.Parse(XElement.Parse(userAgentMappingXml)) : null, proxyUri));
+            var testCases = TestCasesParser.Parse(new CsvParser().Parse(testCasesCsv));
+            await testCases.TestAsync(
+                new HttpRequestService(BaseUriMappingParser.Parse(XElement.Parse(baseUriMappingXml)),
+                    userAgentMappingXml != null ? UserAgentMappingParser.Parse(XElement.Parse(userAgentMappingXml)) : null, proxyUri));
             return testCases;
         }
     }
