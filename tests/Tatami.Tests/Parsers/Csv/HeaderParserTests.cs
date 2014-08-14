@@ -1,6 +1,8 @@
 namespace Tatami.Tests.Parsers.Csv
 {
     using System.Linq;
+    using Csv;
+    using global::Csv;
     using Tatami.Parsers.Csv;
     using Tatami.Validators.Csv;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -19,7 +21,7 @@ namespace Tatami.Tests.Parsers.Csv
                 ",,,,User-Agent,Location,Degree,,,locations,type,,,,,,,,,,,,Value,Query,Attribute,Pattern,Format,FormatCulture,Query,Attribute,Pattern,Format,FormatCulture";
 
             // Act
-            var root = HeaderParser.Parse(new CsvParser(Csv).Parse());
+            var root = HeaderParser.Parse(new CsvParser().Parse(Csv));
             HeaderValidator.Validate(root);
 
             // Assert

@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CsvParser">
+      <HintPath>..\..\packages\CsvParser.NET.0.0.1\lib\net45\CsvParser.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="mscorlib.4.0.0.0.Fakes">
       <HintPath>FakesAssemblies\mscorlib.4.0.0.0.Fakes.dll</HintPath>
@@ -110,7 +113,6 @@
     <Compile Include="Parsers\Csv\Assertions\StatusCodeAssertionParserTests.cs" />
     <Compile Include="Parsers\Csv\Assertions\TextAssertionParserTests.cs" />
     <Compile Include="Parsers\Csv\Assertions\UriAssertionParserTests.cs" />
-    <Compile Include="Parsers\Csv\CsvParserTests.cs" />
     <Compile Include="Parsers\Csv\HeaderParserTests.cs" />
     <Compile Include="Parsers\Csv\HttpRequestParserTests.cs" />
     <Compile Include="Parsers\Csv\TestCasesParserTests.cs" />

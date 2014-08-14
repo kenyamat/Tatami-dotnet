@@ -22,34 +22,39 @@ namespace Tatami.Tests.Services
         [TestMethod]
         public void TestGetResponseWithNullMethod()
         {
-            TestGetResponse(null);
+            TestGetResponse(null, true);
+            TestGetResponse(null, false);
         }
 
         [TestMethod]
         public void TestGetResponseWithGet()
         {
-            TestGetResponse("GET");
+            TestGetResponse("GET", true);
+            TestGetResponse("GET", false);
         }
 
         [TestMethod]
         public void TestGetResponseWithPost()
         {
-            TestGetResponse("POST");
+            TestGetResponse("POST", true);
+            TestGetResponse("POST", false);
         }
 
         [TestMethod]
         public void TestGetResponseWithPut()
         {
-            TestGetResponse("PUT");
+            TestGetResponse("PUT", true);
+            TestGetResponse("PUT", false);
         }
 
         [TestMethod]
         public void TestGetResponseWithDelete()
         {
-            TestGetResponse("DELETE");
+            TestGetResponse("DELETE", true);
+            TestGetResponse("DELETE", false);
         }
 
-        public void TestGetResponse(string method)
+        public void TestGetResponse(string method, bool isAsync)
         {
             using (ShimsContext.Create())
             {
@@ -91,7 +96,9 @@ namespace Tatami.Tests.Services
 
                 // Act
                 var httpRequestService = new HttpRequestService(baseUriMapping, userAgentMapping, "http://proxy.com");
-                var httpResponse = httpRequestService.GetResponseAsync(httpRequest).Result;
+                var httpResponse = isAsync
+                    ? httpRequestService.GetResponseAsync(httpRequest).Result
+                    : httpRequestService.GetResponse(httpRequest);
 
                 // Assert
                 Assert.AreEqual(1, httpResponse.Headers.Count);

@@ -88,6 +88,7 @@ See [UserAgentMapping.xml settings][] for details.
 1. Run test.
 
 ## <a name="Dependencies">Dependencies</a>
+* [CsvParser.NET](https://github.com/kenyamat/CsvParser)
 * [HtmlAgilityPack](http://htmlagilitypack.codeplex.com/)
 * [Newtonsoft.Json](http://james.newtonking.com/json)
 

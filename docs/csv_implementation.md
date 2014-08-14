@@ -19,10 +19,20 @@
 		* [Column details for Expected/Actual section](#Contents_Column_details2)
 
 ## <a name="Sample_CSVs">Sample test case CSVs</a>
-You can check sample CSVs from the following links. Since these files are Google Docs Spreadsheets, you can create links to download the CSV by simply appending ```format=csv``` to the query params of the spreadsheet's URL (make sure the spreadsheet is shared and accessible if you decide to access it directly from your test code). Please see the following for more information on creating CSV files [page](https://help.hootsuite.com/entries/21723778-Scheduling-in-Bulk-and-csv-Files#gdoc).
+You can check sample Csvs from the following links. As these files are Google Docs Spreadsheet, you need to create a link to download CSV.
+
 * [Wikipedia Test](https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/edit?usp=sharing) - [[CSV format](https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/export?format=csv&id=1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE&gid=0)]
 * [Yahoo Weather Test](https://docs.google.com/spreadsheets/d/15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE/edit?usp=sharing) - [[CSV format](https://docs.google.com/spreadsheets/d/15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE/export?format=csv&id=15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE&gid=0)]
 * [Yahoo API Test](https://docs.google.com/spreadsheets/d/1h-8vkF-5jEHXDIBwUpA3_otRVa30Um6qm05ZYoSgbQg/edit?usp=sharing) - [[CSV format](https://docs.google.com/spreadsheets/d/1h-8vkF-5jEHXDIBwUpA3_otRVa30Um6qm05ZYoSgbQg/export?format=csv&id=1h-8vkF-5jEHXDIBwUpA3_otRVa30Um6qm05ZYoSgbQg&gid=0)]
+
+
+Sample code uses Google Docs spreadsheet. Google Docs spreadsheet provides CSV export function.
+https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/edit#gid=0
+
+You can create links to downloadable CSVs by simply appending ```format=csv``` to the query params of the spreadsheet's URL (make sure the spreadsheet is shared and accessible if you decide to access it directly from your test code). Like the following URL:
+https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/export?format=csv&id=1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE&gid=0
+
+Please see this link for more [details](https://help.hootsuite.com/entries/21723778-Scheduling-in-Bulk-and-csv-Files#gdoc).
 
 ## <a name="How_to_create_a_test_case_CSV">How to create a test case CSV</a>
 ### <a name="How1">1.Define arrange header</a>
