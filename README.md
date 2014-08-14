@@ -6,7 +6,7 @@ Tatami is a C# library for web application testing.
 	* Test cases and Assert conditions
 * Verifies HTTP response information.
 	* HTTP response header, cookies, status code, URL
-	* Document structure (HTML, XML, JSON and Other text format) 
+	* Document structure (HTML, XML, JSON and Other text format)
 * Can be integrated in major C# test frameworks and CI.
 	* NUnit, MS Test, Jenkins, TeamCity, etc.
 
@@ -25,7 +25,7 @@ Tatami enables you to reduce test codes and help review for test cases.
 * [Dependencies](#Dependencies)
 * [Copyright](#Copyright)
 
-## <a name="Scope">Scope</a> 
+## <a name="Scope">Scope</a>
 This library covers the following test types.
 * Integration Test
 * Acceptance Test
@@ -38,19 +38,19 @@ Tatami provides the following test functions.
 * Get expected and actual documents (such as HTML, XML, JSON and Other formats).
 * Test HTTP response information (Uri, Status Code, Header, Cookie, Format using XSD).
 * Test response documents using expected values, XPath and regular expression.
-* Provide failed information.  
+* Provide failed information.
 
 ## <a name="Showcase">Showcase</a>
 ### 1. HTML page test (Wikipedia)
-Test a HTML structure of "United States" page using static expected values.
+Test the HTML structure of the "United States" Wikipedia article by expecting static values.
 * This scenario covers to test between html values and static values in CSV.
-* See [Wikipedia page test](docs/sc_wikipedia.md) for details. 
+* See [Wikipedia page test](docs/sc_wikipedia.md) for details.
 ![sample1](docs/imgs/sample1.png)
 
 
 ### 2. HTML page test using Web API (Yahoo Weather)
-Test a HTML structure of "New York" page using values from Web API (Yahoo Weather RSS).
-* Recent Web applications consume data created by Web API instead of database. This scenario will cover to test values between HTML and XML from Web API.
+Test the HTML structure of the "New York" Wikipedia article by expecting values from Web APIs (Yahoo Weather RSS).
+* Recent Web applications consume data created by Web APIs instead of databases. This scenario will test that particular values that are present in an XML Web API exist in a separate HTML interface.
 * See [Yahoo Weather page test](docs/sc_yahoo_weather.md) for details.
 ![sample2](docs/imgs/sample2.png)
 
@@ -74,15 +74,15 @@ See [UserAgentMapping.xml settings][] for details.
 [https://www.nuget.org/packages/Tatami.NET/](https://www.nuget.org/packages/Tatami.NET/)
 
 ## <a name="Setup_steps">Setup steps</a>
-1. Create a C# test project. 
+1. Create a C# test project.
 1. Install Tatami library from nuget.org then sets this into the project.
 	* [https://www.nuget.org/packages/Tatami.NET/](https://www.nuget.org/packages/Tatami.NET/)
 1. Create a BaseUriMapping.xml
 	* See more details : [BaseUriMapping.xml settings][]
-1. Create a UserAgentMapping.xml 
+1. Create a UserAgentMapping.xml
 	* See more details : [UserAgentMapping.xml settings][]
 1. Create a CSV file including test cases.
-	* Csv file : [https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/edit?usp=sharing)	
+	* Csv file : [https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/edit?usp=sharing)
 1. Create a test method.
 	* [samples/SampleTest/Wikipedia/WikipediaTests.cs](samples/SampleTest/Wikipedia/WikipediaTests.cs)
 1. Run test.
