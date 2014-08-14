@@ -1,6 +1,6 @@
 # How to create test case CSV
 
-* [Sample test case CSVs](#Sample_CSVs) 
+* [Sample test case CSVs](#Sample_CSVs)
 * [How to create a test case CSV](#How_to_create_a_test_case_CSV)
 	* [1. Define arrange header](#How1)
 	* [2. Write request information to get test target document](#How2)
@@ -9,30 +9,30 @@
 * [CSV header details](#CSV_header_details)
 	* [Arrange section](#Arrange_section)
 		* [CSV structure](#Arrage_CSV_structure)
-		* [Column details](#Arrage_Column_details) 
+		* [Column details](#Arrage_Column_details)
 	* [Assertion section](#Assertion_section)
 		* [CSV structure](#Assertion_CSV_structure)
-		* [Column details](#Assertion_Column_details) 
+		* [Column details](#Assertion_Column_details)
 	* [Contents section in Assert section](#Contents_section)
 		* [CSV structure](#Contents_CSV_structure)
-		* [Column details](#Contents_Column_details) 
+		* [Column details](#Contents_Column_details)
 		* [Column details for Expected/Actual section](#Contents_Column_details2)
 
 ## <a name="Sample_CSVs">Sample test case CSVs</a>
 You can check sample Csvs from the following links. As these files are Google Docs Spreadsheet, you need to create a link to download CSV.
 
 * [Wikipedia Test](https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/edit?usp=sharing) - [[CSV format](https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/export?format=csv&id=1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE&gid=0)]
-* [Yahoo Weather Test](https://docs.google.com/spreadsheets/d/15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE/edit?usp=sharing) - [[CSV format](https://docs.google.com/spreadsheets/d/15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE/export?format=csv&id=15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE&gid=0)] 
+* [Yahoo Weather Test](https://docs.google.com/spreadsheets/d/15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE/edit?usp=sharing) - [[CSV format](https://docs.google.com/spreadsheets/d/15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE/export?format=csv&id=15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE&gid=0)]
 * [Yahoo API Test](https://docs.google.com/spreadsheets/d/1h-8vkF-5jEHXDIBwUpA3_otRVa30Um6qm05ZYoSgbQg/edit?usp=sharing) - [[CSV format](https://docs.google.com/spreadsheets/d/1h-8vkF-5jEHXDIBwUpA3_otRVa30Um6qm05ZYoSgbQg/export?format=csv&id=1h-8vkF-5jEHXDIBwUpA3_otRVa30Um6qm05ZYoSgbQg&gid=0)]
 
 
-Sample code uses Google Docs spreadsheet. Google Docs spreadsheet provides CSV export function. 
+Sample code uses Google Docs spreadsheet. Google Docs spreadsheet provides CSV export function.
 https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/edit#gid=0
 
-You can get CSV file if you change the URL like the following.
+You can create links to downloadable CSVs by simply appending ```format=csv``` to the query params of the spreadsheet's URL (make sure the spreadsheet is shared and accessible if you decide to access it directly from your test code). Like the following URL:
 https://docs.google.com/spreadsheets/d/1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE/export?format=csv&id=1Gvnq2NlBXyrnsjBH0Xr-R8U0f9RLeCR9RH5eAdTL_XE&gid=0
 
-Please see the more [details](https://help.hootsuite.com/entries/21723778-Scheduling-in-Bulk-and-csv-Files#gdoc).
+Please see this link for more [details](https://help.hootsuite.com/entries/21723778-Scheduling-in-Bulk-and-csv-Files#gdoc).
 
 ## <a name="How_to_create_a_test_case_CSV">How to create a test case CSV</a>
 ### <a name="How1">1.Define arrange header</a>
@@ -49,7 +49,7 @@ Please see the more [details](https://help.hootsuite.com/entries/21723778-Schedu
 ### <a name="How2">2.Write request information to get test target document</a>
 * In this case, you can get test documents using the following requests.
 	* http://en.wikipedia.org/wiki/United_States (UserAgent=IE11)
-	* http://en.wikipedia.org/wiki/United_States?uselang=es (UserAgent=IE11)  
+	* http://en.wikipedia.org/wiki/United_States?uselang=es (UserAgent=IE11)
 * Please see the following page about BaseUri and UserAgent.
 	* [How to create BaseUriMapping.xml](#BaseUriMapping.xml_settings)
 	* [How to create UserAgentMapping.xml](#UserAgentMapping.xml_settings)
@@ -108,7 +108,7 @@ Arrange section describes how to get actual and expected document.
 This section specifies arrange settings, such as the data sources for expected and actual contents.
 
 #### <a name="Arrage_CSV_structure">CSV structure</a>
-You need to keep the following hierarchy. If CSV has invalid hierarchy, you will get a `WrongFileFormatException` before testing. 
+You need to keep the following hierarchy. If CSV has invalid hierarchy, you will get a `WrongFileFormatException` before testing.
 
 |Local Page|Arrange|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|
 |:----------------|:---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -132,7 +132,7 @@ Method|The section specifies HTTP Method name. (GET, POST, PUT, DELETE)|optional
 UserAgent|The section specifies UserAgentMapping key. |optional
 Headers|The section specifies HTTP header settings. |optional
 Cookies|The section specifies HTTP cookie settings. |optional
-PathInfos|The section specifies path info settings. http://yahoo.com/ __local/london__ ?wc=112 |optional 
+PathInfos|The section specifies path info settings. http://yahoo.com/ __local/london__ ?wc=112 |optional
 QueryStrings|The section specifies query string settings. http://yahoo.com/local/london? __wc=112__|optional
 Fragment|The section specifies fragment settings. http://yahoo.com/local/london?wc=112 __#Temp__|optional
 Content|The section specifies content string for POST/PUT. |optional
@@ -154,7 +154,7 @@ Uri|The section specifies response URI for assertion. __/local/data.aspx__ |opti
 StatusCode|The section specifies response status code for assertion. It accepts only text node. __200__,__404__|optional
 Headers|The section specifies HTTP response header for assertion.|optional|
 Cookies|The section specifies HTTP response cookies for assertion.|optional
-Xsd|The section specifies XSD assertion.|optional 
+Xsd|The section specifies XSD assertion.|optional
 Contents|The section specifies document assertion.|optional
 
 ### <a name="Contents_section">Contents section in Assertion section</a>
