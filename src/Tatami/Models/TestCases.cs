@@ -1,7 +1,9 @@
 namespace Tatami.Models
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
     using Tatami.Services;
@@ -23,6 +25,16 @@ namespace Tatami.Models
         {
             get { return this.All(testCase => testCase.Success); }
         }
+
+        /// <summary>
+        /// HttpRequest hooks for Expected
+        /// </summary>
+        public List<Action<HttpRequest, HttpRequestMessage>> HttpRequestHooksForExpected = new List<Action<HttpRequest, HttpRequestMessage>>();
+
+        /// <summary>
+        /// HttpRequest hooks for Actual
+        /// </summary>
+        public List<Action<HttpRequest, HttpRequestMessage>> HttpRequestHooksForActual = new List<Action<HttpRequest, HttpRequestMessage>>();
 
         /// <summary>
         /// Gets or sets failed cases
@@ -159,18 +171,22 @@ namespace Tatami.Models
         /// Test
         /// </summary>
         /// <param name="httpRequestService">the httpRequestService</param>
-        public void Test(IHttpRequestService httpRequestService)
+        /// <param name="hookForActual">the hookForActual</param>
+        /// <param name="hookForExpected">the hookForExpected</param>
+        public void Test(IHttpRequestService httpRequestService,
+            Action<HttpClient> hookForActual = null,
+            Action<HttpClient> hookForExpected = null)
         {
             foreach (var testCase in this)
             {
                 if (testCase.Arranges.Expected != null && testCase.Arranges.Expected.HttpRequest != null)
                 {
-                    testCase.Arranges.Expected.HttpResponse = httpRequestService.GetResponse(testCase.Arranges.Expected.HttpRequest);
+                    testCase.Arranges.Expected.HttpResponse = httpRequestService.GetResponse(testCase.Arranges.Expected.HttpRequest, hookForExpected);
                 }
 
                 if (testCase.Arranges.Actual != null)
                 {
-                    testCase.Arranges.Actual.HttpResponse = httpRequestService.GetResponse(testCase.Arranges.Actual.HttpRequest);
+                    testCase.Arranges.Actual.HttpResponse = httpRequestService.GetResponse(testCase.Arranges.Actual.HttpRequest, hookForActual);
                 }
 
                 testCase.Assert(testCase.Arranges.Expected, testCase.Arranges.Actual);
@@ -181,18 +197,22 @@ namespace Tatami.Models
         /// Test async
         /// </summary>
         /// <param name="httpRequestService">the httpRequestService</param>
-        public async Task TestAsync(IHttpRequestService httpRequestService)
+        /// <param name="hookForActual">the hookForActual</param>
+        /// <param name="hookForExpected">the hookForExpected</param>
+        public async Task TestAsync(IHttpRequestService httpRequestService, 
+            Action<HttpClient> hookForActual = null,
+            Action<HttpClient> hookForExpected = null)
         {
             foreach (var testCase in this)
             {
                 if (testCase.Arranges.Expected != null && testCase.Arranges.Expected.HttpRequest != null)
                 {
-                    testCase.Arranges.Expected.HttpResponse = await httpRequestService.GetResponseAsync(testCase.Arranges.Expected.HttpRequest);
+                    testCase.Arranges.Expected.HttpResponse = await httpRequestService.GetResponseAsync(testCase.Arranges.Expected.HttpRequest, hookForExpected);
                 }
 
                 if (testCase.Arranges.Actual != null)
                 {
-                    testCase.Arranges.Actual.HttpResponse = await httpRequestService.GetResponseAsync(testCase.Arranges.Actual.HttpRequest);
+                    testCase.Arranges.Actual.HttpResponse = await httpRequestService.GetResponseAsync(testCase.Arranges.Actual.HttpRequest, hookForActual);
                 }
 
                 testCase.Assert(testCase.Arranges.Expected, testCase.Arranges.Actual);

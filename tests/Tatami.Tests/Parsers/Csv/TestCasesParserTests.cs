@@ -80,7 +80,7 @@ namespace Tatami.Tests.Parsers.Csv
                 </html>";
             var httpRequestServiceShim = new StubIHttpRequestService
             {
-                GetResponseAsyncHttpRequest = request =>
+                GetResponseAsyncHttpRequestActionOfHttpClient = (request, h) =>
                     request.Name == "Expected"
                         ? Task.FromResult(new HttpResponse { Contents = ExpectedXml, ContentType = "text/xml" })
                         : Task.FromResult(new HttpResponse { Contents = ActualHtml, ContentType = "text/html" })
@@ -123,7 +123,7 @@ namespace Tatami.Tests.Parsers.Csv
                 </html>";
             var httpRequestServiceShim = new StubIHttpRequestService
             {
-                GetResponseAsyncHttpRequest = request =>
+                GetResponseAsyncHttpRequestActionOfHttpClient = (request, h) =>
                     request.Name == "Expected"
                         ? Task.FromResult(new HttpResponse { Contents = ExpectedXml, ContentType = "text/xml" })
                         : Task.FromResult(new HttpResponse { Contents = ActualHtml, ContentType = "text/html" })
@@ -164,7 +164,8 @@ namespace Tatami.Tests.Parsers.Csv
                 </html>";
             var httpRequestServiceShim = new StubIHttpRequestService
             {
-                GetResponseAsyncHttpRequest = request => Task.FromResult(new HttpResponse { Contents = ActualHtml, ContentType = "text/html" })
+                GetResponseAsyncHttpRequestActionOfHttpClient = (request, h) =>
+                    Task.FromResult(new HttpResponse { Contents = ActualHtml, ContentType = "text/html" })
             };
 
             // Act

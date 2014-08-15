@@ -40,7 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CsvParser">
-      <HintPath>..\..\packages\CsvParser.NET.0.0.1\lib\net45\CsvParser.dll</HintPath>
+      <HintPath>..\..\packages\CsvParser.NET.0.0.2\lib\net45\CsvParser.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

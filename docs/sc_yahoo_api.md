@@ -21,9 +21,10 @@ public async Task TestApiWithNewYork()
     var testCasesCsv = await new HttpClient().GetStringAsync(
         "https://docs.google.com/spreadsheets/d/1h-8vkF-5jEHXDIBwUpA3_otRVa30Um6qm05ZYoSgbQg/export?format=csv&id=1h-8vkF-5jEHXDIBwUpA3_otRVa30Um6qm05ZYoSgbQg&gid=0");
     var baseUriMappingXml = File.ReadAllText(@"YahooApi\BaseUriMapping.xml");
+    var testExecutor = new TestExecutor(testCasesCsv, baseUriMappingXml);
 
     // Act
-    var result = await TestExecutor.TestAsync(testCasesCsv, baseUriMappingXml, null);
+    var result = await testExecutor.TestAsync();
 
     // Assert
     if (!string.IsNullOrWhiteSpace(result.FailedMessage))

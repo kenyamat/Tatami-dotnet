@@ -33,7 +33,7 @@ namespace Tatami.Tests.Models
 
             var httpRequestService = new StubIHttpRequestService
             {
-                GetResponseAsyncHttpRequest = r => Task.FromResult(new HttpResponse())
+                GetResponseAsyncHttpRequestActionOfHttpClient = (r, h) => Task.FromResult(new HttpResponse())
             };
 
             // Act
@@ -63,7 +63,7 @@ namespace Tatami.Tests.Models
             };
             var httpRequestService = new StubIHttpRequestService
             {
-                GetResponseAsyncHttpRequest = request => Task.FromResult(new HttpResponse())
+                GetResponseAsyncHttpRequestActionOfHttpClient = (r, h) => Task.FromResult(new HttpResponse())
             };
 
             // Act
@@ -94,7 +94,7 @@ namespace Tatami.Tests.Models
             };
             var httpRequestService = new StubIHttpRequestService
             {
-                GetResponseAsyncHttpRequest = request => Task.FromResult(new HttpResponse())
+                GetResponseAsyncHttpRequestActionOfHttpClient = (r, h) => Task.FromResult(new HttpResponse())
             };
 
             // Act
@@ -126,7 +126,7 @@ namespace Tatami.Tests.Models
             };
             var httpRequestService = new StubIHttpRequestService
             {
-                GetResponseAsyncHttpRequest = request => Task.FromResult(new HttpResponse())
+                GetResponseAsyncHttpRequestActionOfHttpClient = (r, h) => Task.FromResult(new HttpResponse())
             };
 
             // Act

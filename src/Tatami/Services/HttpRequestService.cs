@@ -97,28 +97,32 @@ namespace Tatami.Services
         /// Gets response
         /// </summary>
         /// <param name="request">request information</param>
+        /// <param name="hook">Hook before requesting</param>
         /// <returns>response information</returns>
-        public HttpResponse GetResponse(HttpRequest request)
+        public HttpResponse GetResponse(HttpRequest request, Action<HttpClient> hook = null)
         {
-            return GetResponseAsync(request, false).Result;
+            return GetResponseAsync(request, false, hook).Result;
         }
 
         /// <summary>
         /// Gets response
         /// </summary>
         /// <param name="request">request information</param>
+        /// <param name="hook">Hook before requesting</param>
         /// <returns>response information</returns>
-        public async Task<HttpResponse> GetResponseAsync(HttpRequest request)
+        public async Task<HttpResponse> GetResponseAsync(HttpRequest request, Action<HttpClient> hook = null)
         {
-            return await GetResponseAsync(request, true);
+            return await GetResponseAsync(request, true, hook);
         }
 
         /// <summary>
         /// Gets response
         /// </summary>
         /// <param name="request">request information</param>
+        /// <param name="isAsync">is async</param>
+        /// <param name="hook">Hook before requesting</param>
         /// <returns>response information</returns>
-        public async Task<HttpResponse> GetResponseAsync(HttpRequest request, bool isAsync)
+        public async Task<HttpResponse> GetResponseAsync(HttpRequest request, bool isAsync, Action<HttpClient> hook = null)
         {
             var baseUri = new Uri(this.baseUriMapping[request.BaseUri]);
             var requestUri = CreateUri(baseUri, request.PathInfos, request.QueryStrings, request.Fragment);
@@ -151,6 +155,11 @@ namespace Tatami.Services
             if (!string.IsNullOrWhiteSpace(request.UserAgent))
             {
                 httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(this.userAgentMapping[request.UserAgent]);
+            }
+
+            if (hook != null)
+            {
+                hook(httpClient);
             }
 
             var message = isAsync

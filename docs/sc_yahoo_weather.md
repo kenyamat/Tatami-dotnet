@@ -25,9 +25,10 @@ public async Task TestNewYork()
         "https://docs.google.com/spreadsheets/d/15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE/export?format=csv&id=15WbI7RpQZC-j--xsoYj7mfcapq96FsBi4ZVAEb_lroE&gid=0");
     var baseUriMappingXml = File.ReadAllText(@"YahooWeather\BaseUriMapping.xml");
     var userAgentMappingXml = File.ReadAllText(@"UserAgentMapping.xml");
+    var testExecutor = new TestExecutor(testCasesCsv, baseUriMappingXml, userAgentMappingXml);
 
     // Act
-    var result = await TestExecutor.TestAsync(testCasesCsv, baseUriMappingXml, userAgentMappingXml);
+    var result = await testExecutor.TestAsync();
 
     // Assert
     if (!string.IsNullOrWhiteSpace(result.FailedMessage))
