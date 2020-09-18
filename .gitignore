@@ -10,3 +10,4 @@ tests/*/FakesAssemblies/*
 samples/*/bin/*
 samples/*/obj/*
 TestResults/*
+test
